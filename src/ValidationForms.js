@@ -1,14 +1,7 @@
 import React from 'react'
 
-const styles = {
-    textAlign: 'center',
-    margin: '40px',
-}
-
 const ValidationForms = (props) => (
-    <div
-        style={styles}
-    >
+    <div>
         <h1>New User Sign Up</h1>
         <form>
 
