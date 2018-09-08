@@ -35,6 +35,9 @@ class ValidationForms extends React.Component {
             value.match(passwordReg) ? this.setState({password: true}) : this.setState({password: false})
 
             case 'telephone':
+            value === '' ? this.setState({telephone: null}) :
+            value.match(telephoneReg) ? this.setState({telephone: true}) : this.setState({telephone: false})
+
 
         }
 
@@ -63,7 +66,7 @@ class ValidationForms extends React.Component {
                     <input type="text" name="password" placeholder="password" style={{ borderColor: checkBorderColor(this.state.password) }} onChange={this.validationTest} />
                     <p>Password must alphanumeric (@, _ and - are also allowed) and be 8 - 20 characters</p>
 
-                    <input type="text" name="telephone" placeholder="telephone" />
+                    <input type="text" name="telephone" placeholder="telephone" style={{ borderColor: checkBorderColor(this.state.telephone) }} onChange={this.validationTest} />
                     <p>Telephone must be a valid PL telephone number (11 digits) like this: +48 111 111 111</p>
 
                 </form>
