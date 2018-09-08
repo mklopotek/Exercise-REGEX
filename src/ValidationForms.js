@@ -12,10 +12,10 @@ class ValidationForms extends React.Component {
     }
 
     validationTest = (event) => {
-        const usernameReg = new RegExp('^[a-z]{5,12}$', 'i');
-        const emailReg = /^(\w)+@(\w)+.[a-z]{2,3}$/gi;
+        const usernameReg = new RegExp('^[a-z0-9]{5,12}$', 'i');
+        const emailReg = /^[a-z0-9\.-_]+@[a-z0-9\.-_]+\.[a-z]{2,4}$/;
         const passwordReg = /^[a-z0-9]{8,20}$/gi;
-        const telephoneReg = /^\+48 [1-9][0-9]{2} [0-9]{3} [0-9]{3}$/g;
+        const telephoneReg = /^\+48 [1-9][0-9]{2} [0-9]{3} [0-9]{3}$/i;
 
         let value = (event.target.value);
 
@@ -23,9 +23,12 @@ class ValidationForms extends React.Component {
 
         switch (fieldType) {
             case 'username':
+            value === '' ? this.setState({username: null}) :
             value.match(usernameReg) ? this.setState({username: true}) : this.setState({username: false})
 
             case 'email':
+            value === '' ? this.setState({email: null}) :
+            value.match(emailReg) ? this.setState({email: true}) : this.setState({email: false})
 
             case 'password':
 
@@ -52,8 +55,8 @@ class ValidationForms extends React.Component {
                     <input type="text" name="username" placeholder="username" style={{ borderColor: checkBorderColor(this.state.username) }} onChange={this.validationTest} />
                     <p>Username must be  and contain 5 - 12 characters</p>
 
-                    <input type="text" name="email" placeholder="email" />
-                    <p>Email must be a valid address, e.g. me@mydomain.com</p>
+                    <input type="text" name="email" placeholder="email" style={{ borderColor: checkBorderColor(this.state.email) }} onChange={this.validationTest} />
+                    <p>Email must be a valid address, e.g. me@mydomain.com, uppercase are not allowed</p>
 
                     <input type="text" name="password" placeholder="password" />
                     <p>Password must alphanumeric (@, _ and - are also allowed) and be 8 - 20 characters</p>
