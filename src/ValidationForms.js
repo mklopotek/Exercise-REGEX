@@ -1,4 +1,5 @@
 import React from 'react';
+import PaperRefined from './GlobalComponents/PaperRefined'
 
 const usernameReg = new RegExp('^[a-z0-9]{5,12}$', 'i');
 const emailReg = /^[a-z0-9\.-_]+@[a-z0-9\.-_]+\.[a-z]{2,4}$/;
@@ -44,16 +45,16 @@ class ValidationForms extends React.Component {
     };
 
     render() {
-        
+
         const checkBorderColor = value => value === null ? null : value ? 'green' : 'orange'
 
         return (
-            <div>
+            <PaperRefined>
                 <h1>Sign Up</h1>
                 <form>
                     <input type="text" name="username" placeholder="username" style={{ borderColor: checkBorderColor(this.state.isUserNameCorrect) }} onChange={this.validationTest} />
                     <p>Username must be  and contain 5 - 12 characters</p>
-                    
+
                     <input type="text" name="email" placeholder="email" style={{ borderColor: checkBorderColor(this.state.email) }} onChange={this.validationTest} />
                     <p>Email must be a valid address, e.g. me@mydomain.com, uppercase are not allowed</p>
 
@@ -64,7 +65,7 @@ class ValidationForms extends React.Component {
                     <p>Telephone must be a valid PL telephone number (11 digits) like this: +48 111 111 111</p>
 
                 </form>
-            </div>
+            </PaperRefined>
         )
     };
 };
