@@ -53,7 +53,7 @@ class ValidationForms extends React.Component {
                 <form>
                     <input type="text" name="username" placeholder="username" style={{ borderColor: checkBorderColor(this.state.isUserNameCorrect) }} onChange={this.validationTest} />
                     <p>Username must be  and contain 5 - 12 characters</p>
-
+                    
                     <input type="text" name="email" placeholder="email" style={{ borderColor: checkBorderColor(this.state.email) }} onChange={this.validationTest} />
                     <p>Email must be a valid address, e.g. me@mydomain.com, uppercase are not allowed</p>
 
