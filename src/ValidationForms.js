@@ -44,13 +44,18 @@ class ValidationForms extends React.Component {
 
     };
 
+    onSumbitHandler(e){
+console.log(e)
+
+    };
+
     render() {
 
         const checkBorderColor = value => value === null ? null : value ? 'green' : 'orange'
 
         return (
             <PaperRefined>
-                <h1>Sign Up</h1>
+                <h1>Sign Up Form</h1>
                 <form>
                     <input type="text" name="username" placeholder="username" style={{ borderColor: checkBorderColor(this.state.isUserNameCorrect) }} onChange={this.validationTest} />
                     <p>Username must be  and contain 5 - 12 characters</p>
@@ -63,7 +68,7 @@ class ValidationForms extends React.Component {
 
                     <input type="text" name="telephone" placeholder="telephone" style={{ borderColor: checkBorderColor(this.state.telephone) }} onChange={this.validationTest} />
                     <p>Telephone must be a valid PL telephone number (11 digits) like this: +48 111 111 111</p>
-
+                    <input type="submit" value="Sign Up" onSubmit={this.onSumbitHandler}/>
                 </form>
             </PaperRefined>
         )

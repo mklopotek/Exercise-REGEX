@@ -17,7 +17,9 @@ form{
   margin: 20px auto;
 }
 
-input{
+input,
+button
+{
   display: block;
   padding: 8px 16px;
   font-size: 2em;
