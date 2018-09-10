@@ -11,9 +11,9 @@ class ValidationForms extends React.Component {
         super();
         this.state = {
             isUserNameCorrect: null,
-            email: null,
-            password: null,
-            telephone: null
+            isEmailCorrect: null,
+            isPasswordCorrect: null,
+            isTelephoneCorrect: null
         }
     }
 
@@ -27,16 +27,16 @@ class ValidationForms extends React.Component {
                     value.match(usernameReg) ? this.setState({ isUserNameCorrect: true }) : this.setState({ isUserNameCorrect: false })
 
             case 'email':
-                return value === '' ? this.setState({ email: null }) :
-                    value.match(emailReg) ? this.setState({ email: true }) : this.setState({ email: false })
+                return value === '' ? this.setState({ isEmailCorrect: null }) :
+                    value.match(emailReg) ? this.setState({ isEmailCorrect: true }) : this.setState({ isEmailCorrect: false })
 
             case 'password':
-                return value === '' ? this.setState({ password: null }) :
-                    value.match(passwordReg) ? this.setState({ password: true }) : this.setState({ password: false })
+                return value === '' ? this.setState({ isPasswordCorrect: null }) :
+                    value.match(passwordReg) ? this.setState({ isPasswordCorrect: true }) : this.setState({ isPasswordCorrect: false })
 
             case 'telephone':
-                return value === '' ? this.setState({ telephone: null }) :
-                    value.match(telephoneReg) ? this.setState({ telephone: true }) : this.setState({ telephone: false })
+                return value === '' ? this.setState({ isTelephoneCorrect: null }) :
+                    value.match(telephoneReg) ? this.setState({ isTelephoneCorrect: true }) : this.setState({ isTelephoneCorrect: false })
 
             default:
                 return
@@ -60,13 +60,13 @@ console.log(e)
                     <input type="text" name="username" placeholder="username" style={{ borderColor: checkBorderColor(this.state.isUserNameCorrect) }} onChange={this.validationTest} />
                     <p>Username must be  and contain 5 - 12 characters</p>
 
-                    <input type="text" name="email" placeholder="email" style={{ borderColor: checkBorderColor(this.state.email) }} onChange={this.validationTest} />
+                    <input type="text" name="email" placeholder="email" style={{ borderColor: checkBorderColor(this.state.isEmailCorrect) }} onChange={this.validationTest} />
                     <p>Email must be a valid address, e.g. me@mydomain.com, uppercase are not allowed</p>
 
-                    <input type="text" name="password" placeholder="password" style={{ borderColor: checkBorderColor(this.state.password) }} onChange={this.validationTest} />
+                    <input type="text" name="password" placeholder="password" style={{ borderColor: checkBorderColor(this.state.isPasswordCorrect) }} onChange={this.validationTest} />
                     <p>Password must alphanumeric (@, _ and - are also allowed) and be 8 - 20 characters</p>
 
-                    <input type="text" name="telephone" placeholder="telephone" style={{ borderColor: checkBorderColor(this.state.telephone) }} onChange={this.validationTest} />
+                    <input type="text" name="telephone" placeholder="telephone" style={{ borderColor: checkBorderColor(this.state.isTelephoneCorrect) }} onChange={this.validationTest} />
                     <p>Telephone must be a valid PL telephone number (11 digits) like this: +48 111 111 111</p>
                     <input type="submit" value="Sign Up" onSubmit={this.onSumbitHandler}/>
                 </form>
